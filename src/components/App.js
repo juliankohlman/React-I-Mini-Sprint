@@ -19,13 +19,35 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      title: '',
       movies: ['Blade Runner 2049', 'Ex Machina', 'Looper', 'Baby Driver', 'Fight Club'],
     };
+    this.changeHandler = this.changeHandler.bind(this);
+    this.addMovieHandler = this.addMovieHandler.bind(this);
+  }
+
+  changeHandler(event) {
+    this.setState({
+      title: event.target.value
+    });
+  }
+
+  addMovieHandler() {
+    const title = this.state.title;
+    const movies = this.state.movies
+    movies.push(title);
+    this.setState({
+      movies,
+      title: ''
+    });
   }
 
   render() {
       return (
-        <MoviesList movies={this.state.movies}/>
+        <MoviesList movies={this.state.movies}
+        title={this.state.title}
+        changeHandler={this.changeHandler}
+        addMovieHandler={this.addMovieHandler}/>
       );
   }
 }

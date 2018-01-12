@@ -3,9 +3,13 @@ import React from 'react';
 // Create a const arrow function called MoviesList.
 const MoviesList = (props) => {
   return (
-    <ul>
-      {props.movies.map((movie, i) => <li key={i}>{movie}</li>)}
-    </ul>
+    <div>
+      <input type="text" value={props.title} onChange={props.changeHandler} />
+      <button onClick={props.addMovieHandler}>Submit Movie</button>
+      <ul>
+        {props.movies.map((movie, i) => <li key={i}>{movie}</li>)}
+      </ul>
+    </div>
   );
 };
 
